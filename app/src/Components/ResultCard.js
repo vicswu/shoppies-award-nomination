@@ -112,8 +112,8 @@ const ResultCard = ({
             disabled={
               nominations.length > 4 ||
               nominations
-                .map((nomination) => nomination.Title)
-                .includes(result.Title)
+                .map((nomination) => nomination.imdbID)
+                .includes(result.imdbID)
             }
             endIcon={<StarIcon />}
           >

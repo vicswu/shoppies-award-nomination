@@ -2,6 +2,8 @@
 
 Submission for Shopify Frontend Intern Challenge. 
 
+<img width="1440" alt="Screen Shot 2021-05-06 at 6 28 05 PM" src="https://user-images.githubusercontent.com/59456972/117373318-027e6800-ae99-11eb-8406-ab4793583b1f.png">
+
 ## Tech Stack Used
 
 - React JS
