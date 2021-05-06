@@ -2,10 +2,6 @@
 
 Submission for Shopify Frontend Intern Challenge. 
 
-<iframe src="https://giphy.com/embed/kNKToMepEvodVz4Uyo" width="480" height="264" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/kNKToMepEvodVz4Uyo">via GIPHY</a></p>
-
-<iframe src="https://giphy.com/embed/bdE125dOk7CugdXXD9" width="480" height="264" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/bdE125dOk7CugdXXD9">via GIPHY</a></p>
-
 ## Tech Stack Used
 
 - React JS
@@ -15,6 +11,10 @@ Submission for Shopify Frontend Intern Challenge.
 ## Demo
 
 Try it out at https://happy-wing-1bbb50.netlify.app/
+
+![App Preview](https://media.giphy.com/media/kNKToMepEvodVz4Uyo/source.mov)
+
+![App Preview](https://media.giphy.com/media/bdE125dOk7CugdXXD9/source.mov)
 
 ## Functionality
 
