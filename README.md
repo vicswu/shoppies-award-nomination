@@ -12,9 +12,9 @@ Submission for Shopify Frontend Intern Challenge.
 
 Try it out at https://happy-wing-1bbb50.netlify.app/
 
-![App Preview](https://media.giphy.com/media/kNKToMepEvodVz4Uyo/source.mov)
+![App Preview](https://media.giphy.com/media/kNKToMepEvodVz4Uyo/giphy.gif)
 
-![App Preview](https://media.giphy.com/media/bdE125dOk7CugdXXD9/source.mov)
+![App Preview](https://media.giphy.com/media/bdE125dOk7CugdXXD9/giphy.gif)
 
 ## Functionality
 
