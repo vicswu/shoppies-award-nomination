@@ -29,14 +29,8 @@ Try it out at https://happy-wing-1bbb50.netlify.app/
 ## Installation
 
 - Clone the repository
-- Run 
-```bash
-npm install
-``` in terminal to install all the dependencies
-- Run 
-```bash
-npm start
-``` and go to http://localhost:3000 to view the web app
+- Run `npm install` in terminal to install all the dependencies
+- Run `npm start` and go to http://localhost:3000 to view the web app
 
 
 
