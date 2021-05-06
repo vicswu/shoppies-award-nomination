@@ -2,7 +2,9 @@
 
 Submission for Shopify Frontend Intern Challenge. 
 
-<img width="1440" alt="Screen Shot 2021-05-06 at 6 28 05 PM" src="https://user-images.githubusercontent.com/59456972/117373318-027e6800-ae99-11eb-8406-ab4793583b1f.png">
+<iframe src="https://giphy.com/embed/kNKToMepEvodVz4Uyo" width="480" height="264" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/kNKToMepEvodVz4Uyo">via GIPHY</a></p>
+
+<iframe src="https://giphy.com/embed/bdE125dOk7CugdXXD9" width="480" height="264" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/bdE125dOk7CugdXXD9">via GIPHY</a></p>
 
 ## Tech Stack Used
 
