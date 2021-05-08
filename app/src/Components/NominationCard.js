@@ -20,7 +20,13 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
     display: "flex",
     [theme.breakpoints.down("sm")]: {
-      width: "65vw"
+      width: "65vw",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "22.25vw",
+    },
+    "@media (max-width: 290px)": {
+      width: "85vw",
     }
   },
   movieTitle: {

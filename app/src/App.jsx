@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert from "@material-ui/lab/Alert";
 
 import Search from "./Components/Search";
 import Results from "./Components/Results";
@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       display: "block",
       textAlign: "-webkit-center",
+      marginBottom: "7rem",
     },
   },
   banner: {
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     margin: "auto",
     marginTop: "2rem",
-  }
+  },
 }));
 
 const App = () => {
@@ -76,15 +77,16 @@ const App = () => {
         setProgress={setProgress}
         setError={setError}
       />
-      { nominations.length > 4 &&
+      {nominations.length > 4 && (
         <div className={classes.banner}>
           <Alert severity="info">
-            <Typography style={{margin: "auto"}}>
-              Nomination completed! You have selected 5 mobies. Thank you for your time.
+            <Typography style={{ margin: "auto" }}>
+              Nomination completed! You have selected 5 mobies. Thank you for
+              your time.
             </Typography>
           </Alert>
         </div>
-      }
+      )}
       {isMobile ? (
         <div className={classes.resultsNominations}>
           <Nominations

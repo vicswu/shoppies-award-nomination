@@ -16,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "0",
       width: "70vw",
     },
+    [theme.breakpoints.up("lg")]: {
+      width: "24vw",
+    },
   },
   title: {
     fontSize: "1.5rem",
     color: "black",
-  },
-  confetti: {
-    textAlign: "center",
   },
 }));
 

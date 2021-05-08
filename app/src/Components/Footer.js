@@ -1,14 +1,14 @@
 import React from "react";
 import { Typography, IconButton } from "@material-ui/core";
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { makeStyles } from "@material-ui/core/styles";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import MailIcon from "@material-ui/icons/Mail";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import MailIcon from "@material-ui/icons/Mail";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   iconButton: {
     marginLeft: "auto",
@@ -20,6 +20,9 @@ const useStyles = makeStyles({
     "&:hover": {
       backgroundColor: "#3b8bb9",
       color: "white",
+    },
+    [theme.breakpoints.down("sm")]: {
+      bottom: "12vh",
     }
   },
   blackBox: {
@@ -30,7 +33,10 @@ const useStyles = makeStyles({
     justifyContent: "center",
     position: "fixed",
     bottom: 0,
-    left: 0
+    left: 0,
+    [theme.breakpoints.down("sm")]: {
+      height: "10vh",
+    }
   },
   text: {
     color: "white",
@@ -43,8 +49,8 @@ const useStyles = makeStyles({
     marginTop: "0.25rem",
     cursor: "pointer",
     "&:hover": {
-        color: "#6bb9e5",
-      },
+      color: "#6bb9e5",
+    },
   },
   linkedInIcon: {
     color: "white",
@@ -54,9 +60,8 @@ const useStyles = makeStyles({
     marginTop: "0.25rem",
     cursor: "pointer",
     "&:hover": {
-        color: "#6bb9e5",
-      },
-
+      color: "#6bb9e5",
+    },
   },
   mailIcon: {
     color: "white",
@@ -65,29 +70,45 @@ const useStyles = makeStyles({
     marginTop: "0.25rem",
     cursor: "pointer",
     "&:hover": {
-        color: "#6bb9e5",
-      },
+      color: "#6bb9e5",
+    },
   },
-});
+}));
 
-const Footer = ({results, clickUp}) => {
+const Footer = ({ results, clickUp }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      { results.length !== 0 && 
-        <IconButton aria-label="up" className={classes.iconButton} onClick={clickUp}>
-          <KeyboardArrowUpIcon style={{fontSize: "1.5rem"}}/>
+      {results.length !== 0 && (
+        <IconButton
+          aria-label="up"
+          className={classes.iconButton}
+          onClick={clickUp}
+        >
+          <KeyboardArrowUpIcon style={{ fontSize: "1.5rem" }} />
         </IconButton>
-      }
+      )}
       <div className={classes.blackBox}>
         <Typography variant="body1" className={classes.text}>
           Victor Wu &copy; 2021
         </Typography>
-        <GitHubIcon className={classes.githubIcon} onClick={() => window.open("https://github.com/vicswu")}/>
-        <LinkedInIcon className={classes.linkedInIcon} onClick={() => window.open("https://www.linkedin.com/in/victor-s-wu/")}/>
-        <a href="mailto: v27wu@uwaterloo.ca" target="_blank" rel="noreferrer noopener">
-          <MailIcon className={classes.mailIcon}/>
+        <GitHubIcon
+          className={classes.githubIcon}
+          onClick={() => window.open("https://github.com/vicswu")}
+        />
+        <LinkedInIcon
+          className={classes.linkedInIcon}
+          onClick={() =>
+            window.open("https://www.linkedin.com/in/victor-s-wu/")
+          }
+        />
+        <a
+          href="mailto: v27wu@uwaterloo.ca"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <MailIcon className={classes.mailIcon} />
         </a>
       </div>
     </div>

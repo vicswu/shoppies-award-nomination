@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
       textAlign: "center",
     },
+    [theme.breakpoints.up("lg")]: {
+      width: "50vw",
+    },
   },
   bullet: {
     display: "inline-block",
@@ -43,6 +46,12 @@ const useStyles = makeStyles((theme) => ({
       width: "50vw",
       marginBottom: "1rem",
     },
+    [theme.breakpoints.up("lg")]: {
+      width: "20vw",
+    },
+    "@media (min-width: 960px) and (max-width: 1100px)": {
+      width: "25vw",
+    },
   },
   releaseDateSearch: {
     width: "27vw",
@@ -51,10 +60,17 @@ const useStyles = makeStyles((theme) => ({
       width: "50vw",
       marginLeft: 0,
     },
+    [theme.breakpoints.up("lg")]: {
+      width: "20vw",
+    },
+    "@media (min-width: 960px) and (max-width: 1100px)": {
+      width: "25vw",
+    },
   },
   button: {
     marginTop: "2.5rem",
-    marginLeft: "1rem",
+    marginLeft: "auto",
+    marginRight: "auto",
     backgroundColor: "#6bb9e5",
     color: "white",
     "&:hover": {
@@ -63,8 +79,12 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: 0,
-      marginLeft: "30%",
       marginBottom: "1rem",
+    },
+  },
+  buttonText: {
+    "@media (min-width: 960px) and (max-width: 1100px)": {
+      fontSize: "0.70rem",
     },
   },
 }));
@@ -175,7 +195,7 @@ const Search = ({ setProgress, setError, setResults, results }) => {
             }
           }}
         >
-          Search
+          <Typography className={classes.buttonText}>Search</Typography>
         </Button>
       </CardActions>
     </Card>

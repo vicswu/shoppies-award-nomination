@@ -20,11 +20,20 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
     [theme.breakpoints.down("sm")]: {
       width: "65vw",
-      height: 525,
+      height: 450,
     },
+    [theme.breakpoints.up("lg")]: {
+      width: "22.25vw",
+    },
+    "@media (max-width: 290px)": {
+      width: "85vw",
+    }
   },
   media: {
     height: 350,
+    [theme.breakpoints.down("sm")]: {
+      height: 250
+    }
   },
   movieTitle: {
     fontSize: "1rem",
@@ -45,13 +54,15 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginBottom: "1rem",
     },
+    "@media (min-width: 960px) and (max-width: 1100px)": {
+      width: "8rem",
+    }
   },
-  iconButton: {
-    color: "#ffc302",
-    "&:hover": {
-      color: "#ffc302",
-    },
-  },
+  buttonText: {
+    "@media (min-width: 960px) and (max-width: 1100px)": {
+      fontSize: "0.70rem"
+    }
+  }
 }));
 
 const ResultCard = ({
@@ -98,7 +109,9 @@ const ResultCard = ({
             }
             endIcon={<HelpIcon />}
           >
-            Learn More
+            <Typography className={classes.buttonText}>
+              Learn More
+            </Typography>
           </Button>
           <Button
             variant="contained"
@@ -117,7 +130,9 @@ const ResultCard = ({
             }
             endIcon={<StarIcon />}
           >
-            Nominate
+            <Typography className={classes.buttonText}>
+              Nominate
+            </Typography>
           </Button>
         </div>
       </CardActions>

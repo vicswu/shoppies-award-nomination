@@ -4,6 +4,8 @@ import {
   CardContent,
   Typography,
   CircularProgress,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -18,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
     [theme.breakpoints.down("sm")]: {
       width: "70vw",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "24vw",
     },
   },
   title: {
@@ -35,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginTop: "3rem",
     marginBottom: "3rem",
+    [theme.breakpoints.up("lg")]: {
+      width: "22vw",
+    },
   },
 }));
 
@@ -48,6 +56,8 @@ const Results = ({
   setCheck,
 }) => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = !useMediaQuery(theme.breakpoints.up("md"));
 
   useEffect(() => {
     localStorage.setItem("nominations", JSON.stringify(nominations));
@@ -59,7 +69,9 @@ const Results = ({
       style={{
         height:
           results.length !== 0
-            ? `calc(518px * ${results.length})`
+            ? isMobile
+              ? `calc(488px * ${results.length})`
+              : `calc(518px * ${results.length})`
             : progress
             ? 300
             : 150,
@@ -86,6 +98,9 @@ const Results = ({
         {progress && (
           <div className={classes.progress}>
             <CircularProgress size={100} />
+            <Typography variant="body1">
+              Fetching Results...
+            </Typography>
           </div>
         )}
         {error && (
