@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import MuiAlert from "@material-ui/lab/Alert";
+import moment from "moment";
 
 import Search from "./Components/Search";
+import { getMoviesOMDB } from "./API/search";
 import Results from "./Components/Results";
 import Nominations from "./Components/Nominations";
 import Footer from "./Components/Footer";
@@ -35,11 +37,18 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     margin: "auto",
     marginTop: "2rem",
+    [theme.breakpoints.up("lg")]: {
+      width: "50vw",
+    },
   },
 }));
 
 const App = () => {
   const classes = useStyles();
+  const [title, setTitle] = useState([]);
+  const [releaseDate, setReleaseDate] = useState(null);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
   const [results, setResults] = useState([]);
   const [check, setCheck] = useState(true);
   const [progress, setProgress] = useState(false);
@@ -60,6 +69,32 @@ const App = () => {
     }
   };
 
+  const searchMovies = async (page) => {
+    setProgress(true);
+    setError("");
+    setTotal(0);
+    let searchResults = moment(releaseDate).isValid()
+      ? await getMoviesOMDB({
+          title,
+          releaseDate: moment(releaseDate).format("YYYY"),
+          page,
+        })
+      : await getMoviesOMDB({ title, page });
+    if (searchResults.length === 0 || searchResults.results.length === 0) {
+      setTimeout(function () {
+        setResults(searchResults.results);
+        setError(searchResults.error);
+        setTotal(searchResults.total);
+        setProgress(false);
+      }, 1000);
+    } else {
+      setResults(searchResults.results);
+      setError(searchResults.error);
+      setTotal(searchResults.total);
+      setProgress(false);
+    }
+  };
+
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
@@ -72,10 +107,12 @@ const App = () => {
         </Typography>
       </section>
       <Search
-        results={results}
-        setResults={setResults}
-        setProgress={setProgress}
-        setError={setError}
+        title={title}
+        setTitle={setTitle}
+        releaseDate={releaseDate}
+        setReleaseDate={setReleaseDate}
+        setPage={setPage}
+        searchMovies={searchMovies}
       />
       {nominations.length > 4 && (
         <div className={classes.banner}>
@@ -102,6 +139,10 @@ const App = () => {
             error={error}
             nominations={nominations}
             setNominations={setNominations}
+            page={page}
+            setPage={setPage}
+            total={total}
+            searchMovies={searchMovies}
           />
         </div>
       ) : (
@@ -114,6 +155,10 @@ const App = () => {
             error={error}
             nominations={nominations}
             setNominations={setNominations}
+            page={page}
+            setPage={setPage}
+            total={total}
+            searchMovies={searchMovies}
           />
           <Nominations
             check={check}

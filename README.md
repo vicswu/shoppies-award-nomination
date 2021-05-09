@@ -22,6 +22,7 @@ Try it out at https://happy-wing-1bbb50.netlify.app/
 - Easily search movies by title
 - Make your search more accurate by specifying the movie's release date
 - Included animation when loading search results
+- Navigate through pages of results easily to see all possible movies
 - Will display error text if there are no results corresponding to search parameters
 - Can open movies' IMDb page in new tab by clicking on the movie poster or "Learn More" button
 - Nominating a movie will disable its "Nominate" button

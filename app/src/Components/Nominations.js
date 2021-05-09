@@ -71,9 +71,10 @@ const Nominations = ({ check, nominations, setNominations }) => {
             {`${5 - nominations.length} nominations left!`}
           </Typography>
         )}
-        {nominations.map((nomination) => {
+        {nominations.map((nomination, idx) => {
           return (
             <NominationCard
+              key={idx}
               nomination={nomination}
               nominations={nominations}
               setNominations={setNominations}

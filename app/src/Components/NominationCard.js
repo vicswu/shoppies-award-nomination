@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (max-width: 290px)": {
       width: "85vw",
-    }
+    },
   },
   movieTitle: {
     fontSize: "1rem",

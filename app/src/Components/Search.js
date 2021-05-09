@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Card,
   CardActions,
@@ -10,11 +10,9 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
-import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import TodayIcon from "@material-ui/icons/Today";
 import SearchIcon from "@material-ui/icons/Search";
-import { getMoviesOMDB } from "../API/search";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
     "@media (min-width: 960px) and (max-width: 1100px)": {
       width: "25vw",
     },
+    "@media (min-width: 1280px) and (max-width: 1740px)": {
+      width: "18vw",
+    },
   },
   releaseDateSearch: {
     width: "27vw",
@@ -65,6 +66,9 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (min-width: 960px) and (max-width: 1100px)": {
       width: "25vw",
+    },
+    "@media (min-width: 1280px) and (max-width: 1740px)": {
+      width: "18vw",
     },
   },
   button: {
@@ -89,10 +93,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Search = ({ setProgress, setError, setResults, results }) => {
+const Search = ({
+  title,
+  setTitle,
+  releaseDate,
+  setReleaseDate,
+  setPage,
+  searchMovies,
+}) => {
   const classes = useStyles();
-  const [title, setTitle] = useState([]);
-  const [releaseDate, setReleaseDate] = useState(null);
 
   return (
     <Card className={classes.root}>
@@ -116,27 +125,10 @@ const Search = ({ setProgress, setError, setResults, results }) => {
             onChange={(e) => {
               setTitle(e.target.value);
             }}
-            onKeyDown={async (e) => {
-              if (e.keyCode === 13) {
-                setProgress(true);
-                setError("");
-                let searchResults = moment(releaseDate).isValid()
-                  ? await getMoviesOMDB({
-                      title: title,
-                      releaseDate: moment(releaseDate).format("YYYY"),
-                    })
-                  : await getMoviesOMDB({ title: title });
-                if (results.length === 0) {
-                  setTimeout(function () {
-                    setResults(searchResults.results);
-                    setError(searchResults.error);
-                    setProgress(false);
-                  }, 1000);
-                } else {
-                  setResults(searchResults.results);
-                  setError(searchResults.error);
-                  setProgress(false);
-                }
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                searchMovies(1);
+                setPage(1);
               }
             }}
           />
@@ -173,26 +165,9 @@ const Search = ({ setProgress, setError, setResults, results }) => {
           variant="contained"
           className={classes.button}
           disabled={title.length === 0}
-          onClick={async () => {
-            setProgress(true);
-            setError("");
-            let searchResults = moment(releaseDate).isValid()
-              ? await getMoviesOMDB({
-                  title: title,
-                  releaseDate: moment(releaseDate).format("YYYY"),
-                })
-              : await getMoviesOMDB({ title: title });
-            if (results.length === 0) {
-              setTimeout(function () {
-                setResults(searchResults.results);
-                setError(searchResults.error);
-                setProgress(false);
-              }, 1000);
-            } else {
-              setResults(searchResults.results);
-              setError(searchResults.error);
-              setProgress(false);
-            }
+          onClick={() => {
+            searchMovies(1);
+            setPage(1);
           }}
         >
           <Typography className={classes.buttonText}>Search</Typography>

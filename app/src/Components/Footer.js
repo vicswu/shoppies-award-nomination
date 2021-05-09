@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       bottom: "12vh",
-    }
+    },
   },
   blackBox: {
     width: "100vw",
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     [theme.breakpoints.down("sm")]: {
       height: "10vh",
-    }
+    },
   },
   text: {
     color: "white",

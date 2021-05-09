@@ -7,6 +7,7 @@ import {
   CardActions,
   Button,
   Typography,
+  useMediaQuery,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import HelpIcon from "@material-ui/icons/Help";
@@ -27,13 +28,13 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (max-width: 290px)": {
       width: "85vw",
-    }
+    },
   },
   media: {
     height: 350,
     [theme.breakpoints.down("sm")]: {
-      height: 250
-    }
+      height: 250,
+    },
   },
   movieTitle: {
     fontSize: "1rem",
@@ -56,13 +57,19 @@ const useStyles = makeStyles((theme) => ({
     },
     "@media (min-width: 960px) and (max-width: 1100px)": {
       width: "8rem",
-    }
+    },
+    "@media (min-width: 1280px) and (max-width: 1740px)": {
+      width: "9.25vw",
+    },
   },
   buttonText: {
     "@media (min-width: 960px) and (max-width: 1100px)": {
-      fontSize: "0.70rem"
-    }
-  }
+      fontSize: "0.70rem",
+    },
+    "@media (min-width: 1280px) and (max-width: 1740px)": {
+      fontSize: "0.75rem",
+    },
+  },
 }));
 
 const ResultCard = ({
@@ -73,6 +80,7 @@ const ResultCard = ({
   check,
 }) => {
   const classes = useStyles();
+  const isMobile = useMediaQuery("(max-width:500px)");
 
   return (
     <Card className={classes.root}>
@@ -103,21 +111,18 @@ const ResultCard = ({
             variant="contained"
             size="medium"
             className={classes.button}
-            style={{ marginRight: "1rem" }}
+            style={{ marginRight: isMobile ? undefined : "1rem" }}
             onClick={() =>
               window.open(`https://www.imdb.com/title/${result.imdbID}`)
             }
             endIcon={<HelpIcon />}
           >
-            <Typography className={classes.buttonText}>
-              Learn More
-            </Typography>
+            <Typography className={classes.buttonText}>Learn More</Typography>
           </Button>
           <Button
             variant="contained"
             size="medium"
             className={classes.button}
-            style={{ marginRight: "1rem" }}
             onClick={() => {
               setNominations([...nominations, result]);
               setCheck(!check);
@@ -130,9 +135,7 @@ const ResultCard = ({
             }
             endIcon={<StarIcon />}
           >
-            <Typography className={classes.buttonText}>
-              Nominate
-            </Typography>
+            <Typography className={classes.buttonText}>Nominate</Typography>
           </Button>
         </div>
       </CardActions>

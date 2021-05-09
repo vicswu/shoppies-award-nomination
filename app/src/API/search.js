@@ -1,12 +1,13 @@
 import axios from "axios";
 
-export const getMoviesOMDB = async ({ title, releaseDate }) => {
+export const getMoviesOMDB = async ({ title, releaseDate, page }) => {
   let results = await axios.get(`https://www.omdbapi.com/`, {
     params: {
-      apikey: "8d1e95a9",
+      apikey: process.env.REACT_APP_OMDB_API_KEY,
       type: "movie",
       s: title,
       y: releaseDate,
+      page,
     },
   });
   let error = "";
